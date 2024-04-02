@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tarefas dinamica</title>
+    <style>
+        body {
+            background-color: #ddd;
+        }
+
+        .main {
+            width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Lista de tarefas dinamica</h1>
+
+        <div>
+            <input type="text" id="nova-tarefa" placeholder="Digite uma nova tarefa">
+            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+            <ul id="lista-tarefas"></ul>
+        </div>
+    </div>
+    <script>
+
+        const listaTarefas = document.getElementById('lista-tarefas');
+
+        function adicionarTarefa() {
+            const inputNovaTarefa = document.getElementById('nova-tarefa');
+            const NovaTarefa = inputNovaTarefa.value.trim();
+
+            if (NovaTarefa !== "") {
+                const liTarefa = document.createElement('li');
+                const botao = document.createElement('button');
+
+                liTarefa.textContent = NovaTarefa;
+                botao.textContent = 'excluir tarefa';
+
+                botao.addEventListener('click', function() {
+                    liTarefa.remove(); 
+                    botao.remove(); 
+                });
+
+                listaTarefas.appendChild(liTarefa);
+                listaTarefas.appendChild(botao);
+                inputNovaTarefa.value = "";
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
